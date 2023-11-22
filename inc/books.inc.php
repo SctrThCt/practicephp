@@ -42,7 +42,7 @@ $book = [];
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
             </div>
             <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
+              <button type="button" class="btn btn-primary" onclick="?add='.($books[$i]['idBook']).'">В корзину</button>
             </div>
           </div>';
 
