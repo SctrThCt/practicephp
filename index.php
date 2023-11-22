@@ -34,7 +34,8 @@
 
 <body>
   <?php
-  include_once 'config.php';
+  include 'config.php';
+  include 'inc/lib.inc.php';
 
 
   $firstName = "FirstName";
@@ -42,7 +43,7 @@
   $email = "mail@mail.mail";
   $address = "adress";
 
-  $categories = ["Detective", "Science", "Cooking"];
+  $categories = ["Detective", "Science", "Cooking", "Psychology", "For children", "Economic"];
   $publisher = ["Rosmen", "AST", "Prosveshchenie"];
 
   $successOrder = "Строка, содержащая $firstName";
@@ -53,6 +54,13 @@
   $book["author"] = "автор";
   $book["description"] = "description";
   $book["price"] = 1000;
+
+  $menu = [
+    'delivery' => 'Доставка',
+    'contacts' => 'Контакты',
+     'login' => 'Войти',
+      'basket' => 'Корзина'
+  ];
   ?>
 
 
@@ -69,18 +77,10 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="delivery.html">Доставка</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contacts.html">Контакты</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.html">Войти</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="basket.html">Корзина</a>
-          </li>
+          <?php
+          renderMenu($menu);
+          
+          ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Dropdown
@@ -106,10 +106,8 @@
         <h4>Категория</h4>
 
         <div class="row">
-          <?php 
-          for ($i = 0; $i < count($categories); $i++) {
-            echo '<a class="dropdown-item" href="#">'.$categories[$i].'</a>';
-          }
+          <?php
+          renderCategories($categories);
           ?>
         </div>
         <hr>
@@ -136,12 +134,7 @@
         <div class="row">
           <ul class="list-group col-md-12 col-sm-12">
             <?php
-            for ($i = 0; $i < count($categories); $i++) { 
-              echo '<li class="list-group-item">
-              <input type="checkbox" id="exampleCheck'.$i.'">
-              <label class="form-check-label" for="exampleCheck'.$i.'">'.$publisher[$i].'</label>
-            </li>';
-            }
+            renderPublisher($publisher);
             ?>
             <li class="list-group-item">
               <button type="button" class="btn btn-success">Найти</button>
@@ -159,21 +152,21 @@
             echo $pageTitle; ?></h1>
 
         <div class="card-deck">
-          <?php include 'inc/books.inc.php';?>
+          <?php include 'inc/books.inc.php'; ?>
         </div>
 
 
         <div class="card-deck">
-          <?php include 'inc/books.inc.php';?>
+          <?php include 'inc/books.inc.php'; ?>
         </div>
-
-        </div>
-
 
       </div>
 
 
     </div>
+
+
+  </div>
 
 
   </div>

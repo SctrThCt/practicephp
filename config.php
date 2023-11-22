@@ -6,5 +6,6 @@
  const DBUSER = "postgre";
  const DBPASS = "password";
  const DBNAME = "bookstore";
+ const ORDERS = "orders.txt";
 
 ?>
