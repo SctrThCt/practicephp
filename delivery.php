@@ -81,7 +81,7 @@
 </nav>
 
 <div class="container">
-<h1>Доставка</h1>
+<h1><?php include 'inc/header.inc.php'; echo $pageTitle;?></h1>
 
 <div class="row">
   <div class="col-md-6">

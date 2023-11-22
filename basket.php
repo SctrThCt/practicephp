@@ -36,24 +36,6 @@
     </style>
   </head>
   <body>
-<h1><?php
-include 'config.php';
-$summa = 1500+600+600;
-$counter = 0;
-$counter+=1;
-
-$concate = $firstName + $lastName + $email + $address;
-echo $concate;
-
-$query = "INSERT INTO book VALUES (NULL, '$author', '$name', 123, '$description', $category'";
-
-$num = rand(101,999);
-$result = $num%100;
-$isBetween5And20 = $result > 5 && $result < 20 ? false : true;
-$isEndsWithOne = $result == 1 ? true : false;
-
-
-?></h1>
    
 
       
@@ -103,7 +85,7 @@ $isEndsWithOne = $result == 1 ? true : false;
 
 <div class="container">
   <div class="py-5 text-center">
-    <h2>Оформление заказа</h2>
+    <h2><?php include 'inc/header.inc.php'; echo $pageTitle; ?></h2>
     <p class="lead">Внимательно заполните поля формы, проверьте корректность введённых данных и позиции товаров и их количество.</p>
   </div>
 

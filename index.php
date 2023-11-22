@@ -55,8 +55,6 @@
   $book["price"] = 1000;
   ?>
 
-  <h1><?php echo $successOrder; ?></h1>
-
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -108,15 +106,11 @@
         <h4>Категория</h4>
 
         <div class="row">
-          <a class="dropdown-item" href="#"><?php echo $categories[0] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[1] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[2] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[0] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[1] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[2] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[0] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[1] ?></a>
-          <a class="dropdown-item" href="#"><?php echo $categories[2] ?></a>
+          <?php 
+          for ($i = 0; $i < count($categories); $i++) {
+            echo '<a class="dropdown-item" href="#">'.$categories[$i].'</a>';
+          }
+          ?>
         </div>
         <hr>
 
@@ -141,18 +135,14 @@
 
         <div class="row">
           <ul class="list-group col-md-12 col-sm-12">
-            <li class="list-group-item">
-              <input type="checkbox" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1"><?php echo $publisher[0] ?></label>
-            </li>
-            <li class="list-group-item">
-              <input type="checkbox" id="exampleCheck2">
-              <label class="form-check-label" for="exampleCheck2"><?php echo $publisher[1] ?></label>
-            </li>
-            <li class="list-group-item">
-              <input type="checkbox" id="exampleCheck3">
-              <label class="form-check-label" for="exampleCheck3"><?php echo $publisher[2] ?></label>
-            </li>
+            <?php
+            for ($i = 0; $i < count($categories); $i++) { 
+              echo '<li class="list-group-item">
+              <input type="checkbox" id="exampleCheck'.$i.'">
+              <label class="form-check-label" for="exampleCheck'.$i.'">'.$publisher[$i].'</label>
+            </li>';
+            }
+            ?>
             <li class="list-group-item">
               <button type="button" class="btn btn-success">Найти</button>
             </li>
@@ -165,85 +155,17 @@
       </div>
 
       <div class="col-md-9 col-sm-9 ">
-        <h1>Каталог</h1>
+        <h1><?php include 'inc/header.inc.php';
+            echo $pageTitle; ?></h1>
 
         <div class="card-deck">
-          <div class="card">
-            <div class="card-body">
-              <img src="http://placehold.it/150x220" alt="...">
-              <h3 class="card-title">1200руб</h3>
-              <p class="card-text"><small class="text-muted">Автор: dfgdfg</small></p>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. Издательство: <a href="#">Полезное</a></p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <img src="http://placehold.it/150x220" alt="...">
-              <h3 class="card-title">800руб</h3>
-              <p class="card-text"><small class="text-muted">Автор: sdgfgfg</small></p>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <img src="http://placehold.it/150x220" alt="...">
-              <h3 class="card-title">2100руб</h3>
-              <p class="card-text"><small class="text-muted">Автор: dfgd</small></p>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
-            </div>
-          </div>
-
+          <?php include 'inc/books.inc.php';?>
         </div>
 
 
         <div class="card-deck">
-
-          <div class="card">
-            <div class="card-body">
-              <img src="http://placehold.it/150x220" alt="...">
-              <h3 class="card-title">1200руб</h3>
-              <p class="card-text"><small class="text-muted">Автор: dfgdfg</small></p>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. Издательство: <a href="#">Полезное</a></p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <img src="http://placehold.it/150x220" alt="...">
-              <h3 class="card-title">800руб</h3>
-              <p class="card-text"><small class="text-muted">Автор: sdgfgfg</small></p>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <img src="http://placehold.it/150x220" alt="...">
-              <h3 class="card-title">2100руб</h3>
-              <p class="card-text"><small class="text-muted">Автор: dfgd</small></p>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btn btn-primary">В корзину</button>
-            </div>
-          </div>
+          <?php include 'inc/books.inc.php';?>
+        </div>
 
         </div>
 
