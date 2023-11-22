@@ -37,6 +37,7 @@
   </head>
   <body>
 <h1><?php
+include 'config.php';
 $summa = 1500+600+600;
 $counter = 0;
 $counter+=1;

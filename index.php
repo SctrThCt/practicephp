@@ -34,12 +34,8 @@
 
 <body>
   <?php
-  const AUTHOR = "author";
-  define("YEAR", date("Y"));
-  const DBHOST = "localhost:5432";
-  const DBUSER = "postgre";
-  const DBPASS = "password";
-  const DBNAME = "bookstore";
+  include_once 'config.php';
+
 
   $firstName = "FirstName";
   $lastName = "LastName";
@@ -47,14 +43,14 @@
   $address = "adress";
 
   $categories = ["Detective", "Science", "Cooking"];
-  $publisher = ["Rosmen","AST", "Prosveshchenie"];
+  $publisher = ["Rosmen", "AST", "Prosveshchenie"];
 
   $successOrder = "Строка, содержащая $firstName";
 
   $book = [];
   $book["idBook"] = 1;
   $book["title"] = "title";
-  $book["author"] = AUTHOR;
+  $book["author"] = "автор";
   $book["description"] = "description";
   $book["price"] = 1000;
   ?>
@@ -265,11 +261,7 @@
 
   </div><!-- /.container -->
 
-  <footer class="footer">
-    <div class="container">
-      <span class="text-muted"><?php echo  YEAR . ' ' . AUTHOR; ?> &copy; Интернет-магазин Книжка</span>
-    </div>
-  </footer>
+  <?php include 'inc/footer.inc.php'; ?>
 
 
   <!-- Optional JavaScript -->
