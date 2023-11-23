@@ -49,9 +49,9 @@ function saveOrder(string $firstName, string $lastName, string $email, string $a
     }
 }
 
-function cleanUp(string $string)
+function cleanUp(string $input)
 {
-    return trim(strip_tags($string));
+    return trim(strip_tags($input));
 }
 
 function readOrderFromFile()

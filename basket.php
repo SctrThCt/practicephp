@@ -37,6 +37,22 @@
   </head>
   <body>
 
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+    $firstName = cleanUp($_POST['firstName']);
+    $lastName = cleanUp($_POST['lastName']);
+    $email = cleanUp($_POST['email']);
+    $address = cleanUp($_POST['address']);
+
+  if (saveOrder($firstName, $lastName, $email, $address)) {
+      echo 'Order successfully saved!';
+  } else {
+      echo 'Failed to save order. Please try again.';
+  }
+}
+?>
 
 <div class="container">
   <div class="py-5 text-center">
@@ -80,18 +96,18 @@
     </div>
     <div class="col-md-6 order-md-1">
       <h4 class="mb-3">Информация</h4>
-      <form class="needs-validation" novalidate>
+      <form method="post" class="needs-validation">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="firstName">Имя</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <input type="text" class="form-control" name = "firstName" id="firstName" placeholder="Иван" required>
             <div class="invalid-feedback">
               Укажите корректное имя
             </div>
           </div>
           <div class="col-md-6 mb-3">
             <label for="lastName">Фамилия</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <input type="text" class="form-control" name = "lastName" id="lastName" placeholder="Иванов" required>
             <div class="invalid-feedback">
               Укажите корректную фамилию
             </div>
@@ -100,7 +116,7 @@
 
         <div class="mb-3">
           <label for="email">Email <span class="text-muted">(опционально)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <input type="email" class="form-control" name = "email" id="email" placeholder="you@example.com">
           <div class="invalid-feedback">
             Укажите корректный email 
           </div>
@@ -108,86 +124,11 @@
 
         <div class="mb-3">
           <label for="address">Адрес доставки</label>
-          <input type="text" class="form-control" id="address" placeholder="город, улица, дом, квартира" required>
+          <input type="text" class="form-control" name = "address" id="address" placeholder="город, улица, дом, квартира" required>
           <div class="invalid-feedback">
             Укажите адрес доставки
           </div>
         </div>
-<!--
-        <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">Запомнить адрес доставки как основной адрес</label>
-        </div>
-        <hr class="mb-4">
-
-        <h4 class="mb-3">Интервал времени</h4>
-
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Часть недели</label>
-            <select class="custom-select d-block w-100" id="country" required>
-              <option value="">Выберите...</option>
-              <option>Рабочие дни (пн-пт)</option>
-              <option>Выходные (сб-вс)</option>
-            </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-        </div>
-
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="deliveryInterval" type="radio" class="custom-control-input" checked required value="1">
-            <label class="custom-control-label" for="credit">с 8 до 13</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="deliveryInterval" type="radio" class="custom-control-input" required value="2">
-            <label class="custom-control-label" for="debit">с 13 до 18</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="deliveryInterval" type="radio" class="custom-control-input" required value="3">
-            <label class="custom-control-label" for="paypal">с 18 до 23</label>
-          </div>
-        </div>
-        <hr class="mb-4">
-        <h4 class="mb-3">Платёжная информация</h4>
--->
-        <!-- ВНИМАНИЕ! Не храните платёжную информацию на своём сервере -->
-<!--        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Имя на карте</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-            <small class="text-muted">Полностью как на карте</small>
-            <div class="invalid-feedback">
-              Укажите имя на карте
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Номер кредитной карты</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-            <div class="invalid-feedback">
-              Должен быть указан номер кредитной карты
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-6">
-            <label for="cc-expiration">Срок действия до</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-            <div class="invalid-feedback">
-              Укажите срок действия
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-            <div class="invalid-feedback">
-              Укажите секретный код CVV
-            </div>
-          </div>
-        </div> -->
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Оформить заказ!</button>
       </form>
