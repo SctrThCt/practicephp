@@ -2,7 +2,7 @@
 
 $pageTitle = '';
 
-switch (basename($_SERVER['SCRIPT_FILENAME'], '.php')) {
+switch ($page) {
     case 'index':
         $pageTitle = 'Главная';
         break;
