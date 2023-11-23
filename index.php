@@ -36,7 +36,8 @@
   <?php
   include_once 'config.php';
   include_once 'inc/lib.inc.php';
-
+  
+  session_start();
 
   $firstName = "FirstName";
   $lastName = "LastName";
@@ -71,6 +72,17 @@
     case "basket":$page = "basket.php";break;
     default:$page = "main.php";
   }
+
+  if (isset($_GET['add'])) {
+    $_SESSION['basket']++;
+    if (isset($_SESSION['books'])){
+      array_push($_SESSION['books'], $_GET['add']);
+    } else {
+      $_SESSION['books'] = [$_GET['add']];
+    }
+    
+  }
+
   ?>
 
 

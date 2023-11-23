@@ -100,3 +100,22 @@ function renderHeader(string $page)
 
     return $pageTitle;
 }
+
+function renderBooksBasket(array $ids) {
+    if (empty($ids)) {
+        echo "Пусто";
+    } else {
+    for ($i = 0; $i < count($ids); $i++) {
+
+        global $books;
+        echo '<li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">' . $books[$i]['title'] . '</h6>
+          <small class="text-muted">' . $books[$i]['description'] . '</small>
+        </div>
+        <span class="text-muted">' . $books[$i]['price'] . 'руб. * 1шт</span>
+        <span ><a href="#delete" class="btn btn-success btn-sm ">Удалить</a></span>
+      </li>';
+    }
+}
+}
