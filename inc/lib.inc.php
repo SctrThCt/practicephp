@@ -2,7 +2,7 @@
 
 use PSpell\Config;
 
-include 'config.php'
+include_once 'config.php';
 
 $orderCounter = 0;
 function renderCategories(array $categories) {
@@ -56,5 +56,13 @@ function readOrderFromFile(){
     for ($i = 0; $i < count($order); $i++) {
         echo $order[$i]."\n";
     }
+}
+
+function getParam(?string $param): ?string {
+    return $param;
+}
+
+function postParam(?array $param): ?array { 
+    return $param;
 }
 ?>
