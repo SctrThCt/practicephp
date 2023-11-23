@@ -2,10 +2,10 @@
 
  const AUTHOR = "author";
  define('YEAR', date("Y"));
- const DBHOST = "localhost:5432";
- const DBUSER = "postgre";
+ const DBHOST = "localhost:3306";
+ const DBUSER = "mysql";
  const DBPASS = "password";
- const DBNAME = "bookstore";
+ const DBNAME = "eshop";
  const ORDERS = "orders.txt";
 
 
